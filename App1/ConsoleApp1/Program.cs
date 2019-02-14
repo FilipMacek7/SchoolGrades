@@ -15,7 +15,7 @@ namespace ConsoleApp1
         public static void Debug()
         {
             ClassLibrary1.PristupTabulka pristup = new ClassLibrary1.PristupTabulka();        
-            ClassLibrary1.DatabazeZnamek databaze = new ClassLibrary1.DatabazeZnamek(pristup.DataAccess());
+            ClassLibrary1.Databaze databaze = new ClassLibrary1.Databaze(pristup.DataAccess());
             ClassLibrary1.Znamka znamka = new ClassLibrary1.Znamka();
             znamka.znamka = 1;
             znamka.Vaha = 30;

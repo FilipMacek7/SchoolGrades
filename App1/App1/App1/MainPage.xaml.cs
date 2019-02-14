@@ -13,25 +13,31 @@ namespace App1
         {
             InitializeComponent();
             ClassLibrary1.PristupTabulka pristup = new ClassLibrary1.PristupTabulka();
-            ClassLibrary1.DatabazeZnamek databaze = new ClassLibrary1.DatabazeZnamek(pristup.DataAccess());
-            databaze.Predmety.Add()
-            ClassLibrary1.Predmet vah = new ClassLibrary1.Predmet();
-            vah.Nazev = "VAH";
+            ClassLibrary1.Databaze databaze = new ClassLibrary1.Databaze(pristup.DataAccess());
+
+            ClassLibrary1.Predmet vah = new ClassLibrary1.Predmet
+            {
+                Nazev = "VAH"
+            };
+
+            ClassLibrary1.Znamka znamka = new ClassLibrary1.Znamka
+            {
+                znamka = 1,
+                Vaha = 30
+            };
+
+            vah.Znamky.Add(znamka);
+
             layout.Children.Add(new Label { Text = vah.Nazev });
             foreach (ClassLibrary1.Znamka z in databaze.GetItemsFromSubject("VAH"))
             {
                 layout.Children.Add(new Label { Text = z.znamka.ToString() });
             }
-            layout.Children.Add(new Label { Text = "PCV" });
-            foreach (ClassLibrary1.Znamka z in databaze.GetItemsFromSubject("PCV"))
-            {
-                layout.Children.Add(new Label { Text = z.znamka.ToString() });
-            }
         }
 
-        private async Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            async Navigation.PushAsync(new NavigationPage(new AddMarks()));
+            await Navigation.PushAsync(new NavigationPage(new AddMarks()));
         }
 
     }

@@ -6,15 +6,15 @@ namespace ClassLibrary1
 {
     public class PristupTabulka
     {
-        static DatabazeZnamek database;
+        static Databaze database;
 
-        public static DatabazeZnamek Database
+        public static Databaze Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new DatabazeZnamek(
+                    database = new Databaze(
                       Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SQLite.db3"));
                 }
                 return database;

@@ -6,11 +6,11 @@ using SQLite;
 
 namespace ClassLibrary1
 {
-    public class DatabazeZnamek
+    public class Databaze
     {
         SQLiteConnection db;
         public List<Predmet> Predmety;
-        public DatabazeZnamek(string dbPath)
+        public Databaze(string dbPath)
         {
             db = new SQLiteConnection(dbPath);          
             db.CreateTable<Znamka>();
