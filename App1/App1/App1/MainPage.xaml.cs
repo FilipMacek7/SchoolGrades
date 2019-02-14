@@ -37,7 +37,7 @@ namespace App1
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new AddMarks()));
+            await Navigation.PushAsync(new NavigationPage(new PridatZnamku()));
         }
 
     }

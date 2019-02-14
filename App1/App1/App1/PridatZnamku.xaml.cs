@@ -10,11 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace App1
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddMarks : ContentPage
+	public partial class PridatZnamku : ContentPage
 	{
-		public AddMarks ()
+		public PridatZnamku ()
 		{
-			InitializeComponent();
+			InitializeComponent ();
 		}
 	}
 }

@@ -4,7 +4,6 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
-using SQLite;
 
 namespace App1.iOS
 {

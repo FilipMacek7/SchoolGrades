@@ -4,11 +4,12 @@
              xmlns:local="clr-namespace:App1"
              x:Class="App1.MainPage">
 
-    <StackLayout x:Name="layout">
+    <StackLayout>
         <!-- Place new controls here -->
         <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <StackLayout x:Name="layout"></StackLayout>
         <Button Clicked="Button_Clicked" Text="+"></Button>
     </StackLayout>
 
