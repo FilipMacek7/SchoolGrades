@@ -1,19 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App1.PridatZnamku">
+             x:Class="App1.OdebratPredmet">
     <ContentPage.Content>
         <StackLayout>
-            <Label>Předmět</Label>
             <Picker x:Name="predmetinput" SelectedIndex="{Binding Industry}" HorizontalOptions="FillAndExpand">
                 <Picker.Items>
                 </Picker.Items>
             </Picker>
-            <Label>Známka</Label>
-            <Entry x:Name="znamkainput"></Entry>
-            <Label>Váha</Label>
-            <Entry x:Name="vahainput"></Entry>
-            <Button Clicked="Button_Clicked" Text="Přidat známku"></Button>
+            <Button Clicked="Button_Clicked" Text="Odebrat předmět"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

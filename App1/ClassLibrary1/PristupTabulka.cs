@@ -25,8 +25,6 @@ namespace ClassLibrary1
             string dbPath = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.Personal),
         "SQLite.db3");
-            var db = new SQLiteConnection(dbPath);
-            var table = db.Table<Znamka>();
 
             return dbPath;
         }

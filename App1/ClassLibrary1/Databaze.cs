@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
@@ -9,76 +10,69 @@ namespace ClassLibrary1
     public class Databaze
     {
         SQLiteConnection db;
-        public List<Predmet> Predmety;
+
         public Databaze(string dbPath)
         {
-            db = new SQLiteConnection(dbPath);          
+            db = new SQLiteConnection(dbPath);
+            db.CreateTable<Predmet>();
             db.CreateTable<Znamka>();
-            var znamkaList = db.Table<Znamka>();
+
         }
-        public List<Znamka> GetItems()
+        public List<Znamka> GetZnamky(int predmetID)
+        {
+            return db.Query<Znamka>("SELECT * FROM [Znamky] WHERE [PredmetID] =" + predmetID);
+        }
+        public List<Predmet> GetPredmety()
+        {
+            return db.Table<Predmet>().ToList();
+        }
+        public List<Znamka> GetAllZnamky()
         {
             return db.Table<Znamka>().ToList();
         }
-
-        public List<Znamka> GetItemsNotDone()
-        {
-            return db.Query<Znamka>("SELECT * FROM [Znamka] WHERE [Done] = 0");
-        }
-
-        public Znamka GetItem(int id)
+        public Znamka GetItemZnamka(int id)
         {
             return db.Table<Znamka>().Where(i => i.ID == id).FirstOrDefault();
         }
 
-        public int SaveItemAsync(Znamka item)
+        public Predmet GetItemPredmet(int id)
         {
-            if (item.ID != 0)
-            {
-                return db.Update(item);
-            }
-            else
-            {
-                return db.Insert(item);
-            }
+            return db.Table<Predmet>().Where(i => i.Id == id).FirstOrDefault();
         }
 
-        public int DeleteItem(Znamka item)
+        public int SaveItemPredmet(Predmet item)
+        {
+                return db.Insert(item);
+        }
+
+        public int SaveItemZnamka(Znamka item)
+        {
+                return db.Insert(item);
+        }
+
+        public int DeleteItemZnamka(Znamka item)
         {
             return db.Delete(item);
         }
 
-        public int prumerPredmetu(string predmet)
+        public int DeleteItemPredmet(Predmet item)
         {
-            if (GetItems() != null)
-            {
-                int pocetznamek = 0;
-                int soucetznamek = 0;
-                foreach (Znamka z in db.Query<Znamka>("SELECT * FROM [Znamka] WHERE [Predmet] =" + predmet))
-                {
-                    pocetznamek++;
-                    soucetznamek = soucetznamek + z.znamka;
-                }
-
-                return soucetznamek / pocetznamek;
-            }
-            else
-            {
-                return 0;
-            }
+            return db.Delete(item);
         }
 
-
-        public List<Znamka> GetItemsFromSubject(string predmet)
+        public double prumerPredmetu(int predmetID)
         {
-            if (GetItems() != null)
-            {
-                return db.Query<Znamka>("SELECT * FROM [Znamka] WHERE [Predmet] =" + predmet);
+            double soucetznamek = 0;
+            double soucetvahy = 0;
+            foreach (Znamka z in db.Query<Znamka>("SELECT * FROM [Znamky] WHERE [PredmetID] =" + predmetID))
+            {               
+                soucetznamek = soucetznamek + z.znamka * z.Vaha;
+                soucetvahy = soucetvahy + z.Vaha;
             }
-            else
-            {
-                return null;
-            }
+            double result = soucetznamek / soucetvahy;
+
+            return result;
+
         }
     }
 }

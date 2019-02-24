@@ -5,12 +5,11 @@
              x:Class="App1.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
         <StackLayout x:Name="layout"></StackLayout>
-        <Button Clicked="Button_Clicked" Text="+"></Button>
+        <Button Clicked="Button_Clicked" Text="Přidat předmět"></Button>
+        <Button Clicked="Button_Clicked3" Text="Odebrat předmět"></Button>
+        <Button Clicked="Button_Clicked2" Text="Přidat známku"></Button>
+        <Button Clicked="Button_Clicked4" Text="Odebrat známku"></Button>
     </StackLayout>
 
 </ContentPage>

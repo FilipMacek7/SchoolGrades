@@ -1,28 +1,16 @@
-﻿using System;
+﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ClassLibrary1
 {
+    [Table("Predmety")]
     public class Predmet
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string Nazev { get; set; }
-        public List<Znamka> Znamky
-        {
-            get
-            {
-                if (this.Znamky == null)
-                {
-                    this.Znamky = new List<Znamka>();
-                }
-
-                return this.Znamky;
-            }
-
-            set
-            {
-                this.Znamky = value;
-            }
-        }
+        [OneToMany]
+        public List<Znamka> Znamky { get; set; }
     }
 }
