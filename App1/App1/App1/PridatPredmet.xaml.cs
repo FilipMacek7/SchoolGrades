@@ -24,15 +24,15 @@ namespace App1
             PristupTabulka pristup = new PristupTabulka();
             Databaze db = new Databaze(pristup.DataAccess());
             Predmet predmet = new Predmet();
-            if(db.GetPredmety().Count() == 0 & !string.IsNullOrWhiteSpace(nazevinput.Text))
+            if(db.GetAllPredmety().Count() == 0 & !string.IsNullOrWhiteSpace(nazevinput.Text))
             {
                 predmet.Nazev = nazevinput.Text;
                 db.SaveItemPredmet(predmet);
                 Navigation.PushAsync(new MainPage());
             }
-            else if(db.GetPredmety().Count() > 0 & !string.IsNullOrWhiteSpace(nazevinput.Text))
+            else if(db.GetAllPredmety().Count() > 0 & !string.IsNullOrWhiteSpace(nazevinput.Text))
             {
-                foreach (Predmet p in db.GetPredmety())
+                foreach (Predmet p in db.GetAllPredmety())
                 {
                     if (p.Nazev != nazevinput.Text)
                     {

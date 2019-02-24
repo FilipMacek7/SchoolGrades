@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:App1"
              x:Class="App1.MainPage">
-
-    <StackLayout>
-        <StackLayout x:Name="layout"></StackLayout>
-        <Button Clicked="Button_Clicked" Text="Přidat předmět"></Button>
-        <Button Clicked="Button_Clicked3" Text="Odebrat předmět"></Button>
-        <Button Clicked="Button_Clicked2" Text="Přidat známku"></Button>
-        <Button Clicked="Button_Clicked4" Text="Odebrat známku"></Button>
-    </StackLayout>
-
+    <ScrollView>
+        <StackLayout>
+            <StackLayout x:Name="layout"></StackLayout>
+            <Button Clicked="Button_Clicked" Text="Přidat předmět"></Button>
+            <Button Clicked="Button_Clicked3" Text="Odebrat předmět"></Button>
+            <Button Clicked="Button_Clicked2" Text="Přidat známku"></Button>
+            <Button Clicked="Button_Clicked4" Text="Odebrat známku"></Button>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

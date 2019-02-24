@@ -22,7 +22,7 @@ namespace ClassLibrary1
         {
             return db.Query<Znamka>("SELECT * FROM [Znamky] WHERE [PredmetID] =" + predmetID);
         }
-        public List<Predmet> GetPredmety()
+        public List<Predmet> GetAllPredmety()
         {
             return db.Table<Predmet>().ToList();
         }
@@ -71,7 +71,7 @@ namespace ClassLibrary1
             }
             double result = soucetznamek / soucetvahy;
 
-            return result;
+            return Math.Round(result, 2); 
 
         }
     }

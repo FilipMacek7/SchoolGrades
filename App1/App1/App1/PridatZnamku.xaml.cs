@@ -18,7 +18,7 @@ namespace App1
 			InitializeComponent();         
             PristupTabulka pristup = new PristupTabulka();
             Databaze db = new Databaze(pristup.DataAccess());
-            foreach (Predmet p in db.GetPredmety())
+            foreach (Predmet p in db.GetAllPredmety())
             {
                 predmetinput.Items.Add(p.Nazev);
             }
@@ -32,7 +32,7 @@ namespace App1
             int value2;
             if(int.TryParse(znamkainput.Text, out value) & int.TryParse(vahainput.Text, out value2))
             {
-                foreach (Predmet p in db.GetPredmety())
+                foreach (Predmet p in db.GetAllPredmety())
                 {
                     if(p.Nazev == (string)predmetinput.SelectedItem){
                         Znamka znamka = new Znamka();

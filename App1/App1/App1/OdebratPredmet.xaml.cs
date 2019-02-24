@@ -19,7 +19,7 @@ namespace App1
 		{
 			InitializeComponent ();
             Databaze db = new Databaze(pristup.DataAccess());
-            foreach (Predmet p in db.GetPredmety())
+            foreach (Predmet p in db.GetAllPredmety())
             {
                 predmetinput.Items.Add(p.Nazev);
             }
@@ -27,7 +27,7 @@ namespace App1
         private void Button_Clicked(object sender, EventArgs e)
         {
             Databaze db = new Databaze(pristup.DataAccess());
-            foreach (Predmet p in db.GetPredmety())
+            foreach (Predmet p in db.GetAllPredmety())
             {
                 if (p.Nazev.Equals((string)predmetinput.SelectedItem))
                 {
