@@ -101,15 +101,20 @@ namespace App1
             deleteZnamka = true;
             Page_Reload();
         }
-        private void Button_Clicked5(object sender, EventArgs e)
+        private async void Button_Clicked5(object sender, EventArgs e)
         {
             PristupTabulka pristup = new PristupTabulka();
             Databaze db = new Databaze(pristup.DataAccess());
             var button = (Button)sender;
             var classId = button.ClassId;
-            db.DeleteItemZnamka(db.GetItemZnamka(int.Parse(classId)));
-            deleteZnamka = false;
-            Page_Reload();
+            Znamka znamka = db.GetItemZnamka(int.Parse(button.ClassId));
+            var answer = await DisplayAlert("Potvrzení smazání známky", "Chcete opravdu smazat " + znamka.znamka + " z předmětu " + db.GetItemPredmet(znamka.PredmetID) + "?", "Ano", "Ne");
+            if (answer.Equals("Ano"))
+            {
+                db.DeleteItemZnamka(db.GetItemZnamka(int.Parse(classId)));
+                deleteZnamka = false;
+                Page_Reload();
+            }
         }
     }
 }

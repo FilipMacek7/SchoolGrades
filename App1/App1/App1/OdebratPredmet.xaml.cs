@@ -24,18 +24,23 @@ namespace App1
                 predmetinput.Items.Add(p.Nazev);
             }
         }
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Databaze db = new Databaze(pristup.DataAccess());
-            foreach (Predmet p in db.GetAllPredmety())
+        private async void Button_Clicked(object sender, EventArgs e)
+        {         
+            var answer = await DisplayAlert("Potvrzení smazání předmětu", "Chcete opravdu smazat tento"+ predmetinput.SelectedItem.ToString(),"Ano", "Ne");
+            if(answer.Equals("Ano"))
             {
-                if (p.Nazev.Equals((string)predmetinput.SelectedItem))
+                Databaze db = new Databaze(pristup.DataAccess());
+                foreach (Predmet p in db.GetAllPredmety())
                 {
-                    db.DeleteItemPredmet(p);
-                    foreach(Znamka z in db.GetZnamky(p.Id)){
-                        db.DeleteItemZnamka(z);
+                    if (p.Nazev.Equals((string)predmetinput.SelectedItem))
+                    {
+                        db.DeleteItemPredmet(p);
+                        foreach (Znamka z in db.GetZnamky(p.Id))
+                        {
+                            db.DeleteItemZnamka(z);
+                        }
+                        await Navigation.PushAsync(new MainPage());
                     }
-                    Navigation.PushAsync(new MainPage());
                 }
             }
         }
